@@ -9,24 +9,14 @@
 import SwiftUI
 
 struct TaskAdd: View {
-    var toggleSheet: () -> Void
-    @State var taskName: String = ""
-    @Binding var tasks: [Task]
+    @ObservedObject var taskAddVM: TaskAddViewModel
     
-    func addTodo(){
-        self.tasks.insert(Task(id: UUID().hashValue, title: self.taskName), at: 0)
-    }
-    
-    func onAdd(){
-        addTodo();
-        toggleSheet();
-    }
-    
+
     var body: some View {
         
         let taskNameBinding = Binding<String>(
-            get: { self.taskName },
-            set: { self.taskName = $0.trimmingCharacters(in: .whitespacesAndNewlines) }
+            get: { self.taskAddVM.taskName },
+            set: { self.taskAddVM.taskName = $0.trimmingCharacters(in: .whitespacesAndNewlines) }
         )
         
         return VStack {
@@ -39,7 +29,7 @@ struct TaskAdd: View {
             }
             .padding()
             
-            Button(action: onAdd) {
+            Button(action: taskAddVM.onAdd) {
                     Text("Add").font(.callout)
                     Image(systemName: "plus.circle")
                         .frame(width: 20, height: 20)
@@ -47,11 +37,11 @@ struct TaskAdd: View {
             .frame(width: 100, height: 15, alignment: .center)
             .padding()
             .background(Color.pink)
-            .opacity(taskName.isEmpty ? 0.5 : 1)
+            .opacity(taskAddVM.taskName.isEmpty ? 0.5 : 1)
             .foregroundColor(.white)
             .cornerRadius(100)
             .animation(.spring())
-            .disabled(taskName.isEmpty)
+            .disabled(taskAddVM.taskName.isEmpty)
         }
     }
 }
@@ -60,7 +50,7 @@ func togglePreview(){}
 
 struct TaskAdd_Previews: PreviewProvider {
     static var previews: some View {
-        TaskAdd(toggleSheet: togglePreview, tasks: .constant(TaskStore().tasks))
+        TaskAdd(taskAddVM: TaskAddViewModel(taskListVM: TaskListViewModel()))
     }
 }
 

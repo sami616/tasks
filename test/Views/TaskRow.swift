@@ -10,14 +10,9 @@ import SwiftUI
 
 struct TaskRow: View {
     
-    @ObservedObject var task: Task
+    @ObservedObject var taskRowVM: TaskRowViewModel
     @State var textfieldColor = Color.black
     
-    func toggleCompleted(){
-        withAnimation {
-            self.task.completed.toggle()
-        }
-    }
     
     func handleFocus(editingChanged: Bool){
         if editingChanged {
@@ -30,13 +25,13 @@ struct TaskRow: View {
     
     var body: some View {
         HStack {
-            Button(action: toggleCompleted) {
+            Button(action: taskRowVM.toggleCompleted) {
                 ZStack {
                     Capsule()
                         .trim(from: 0, to: 1)
                         .stroke(style: StrokeStyle(lineWidth: 2))
                         .foregroundColor(.pink)
-                    if(task.completed){
+                    if(taskRowVM.task.completed){
                         Capsule()
                             .trim(from: 0, to: 1)
                             .frame(width: 10, height: 10)
@@ -45,14 +40,14 @@ struct TaskRow: View {
                     }
                 }
             }.frame(width: 20, height: 20)
-            TextField("Update title", text: $task.title, onEditingChanged: handleFocus).foregroundColor(task.completed ? Color.pink : textfieldColor)
+            TextField("Update title", text: $taskRowVM.task.title, onEditingChanged: handleFocus).foregroundColor(taskRowVM.task.completed ? Color.pink : textfieldColor)
         }
     }
 }
 
 struct TaskRow_Previews: PreviewProvider {
     static var previews: some View {
-        TaskRow(task: Task(id: 1, title: "Title"))
+        TaskRow(taskRowVM: TaskRowViewModel(task: Task(title: "Title")))
     }
 }
 
