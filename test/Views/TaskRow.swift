@@ -1,18 +1,9 @@
-//
-//  ListItem.swift
-//  test
-//
-//  Created by Samuel Resua on 24/08/2020.
-//  Copyright © 2020 Samuel Resua. All rights reserved.
-//
-
 import SwiftUI
 
 struct TaskRow: View {
     
     @ObservedObject var taskRowVM: TaskRowViewModel
     @State var textfieldColor = Color.black
-    
     
     func handleFocus(editingChanged: Bool){
         if editingChanged {
@@ -21,7 +12,6 @@ struct TaskRow: View {
             self.textfieldColor = Color.black
         }
     }
-    
     
     var body: some View {
         HStack {
@@ -44,10 +34,3 @@ struct TaskRow: View {
         }
     }
 }
-
-struct TaskRow_Previews: PreviewProvider {
-    static var previews: some View {
-        TaskRow(taskRowVM: TaskRowViewModel(task: Task(title: "Title")))
-    }
-}
-

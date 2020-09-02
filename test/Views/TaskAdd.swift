@@ -1,17 +1,9 @@
-//
-//  TodoDetail.swift
-//  test
-//
-//  Created by Samuel Resua on 24/08/2020.
-//  Copyright © 2020 Samuel Resua. All rights reserved.
-//
 
 import SwiftUI
 
 struct TaskAdd: View {
     @ObservedObject var taskAddVM: TaskAddViewModel
     
-
     var body: some View {
         
         let taskNameBinding = Binding<String>(
@@ -45,12 +37,3 @@ struct TaskAdd: View {
         }
     }
 }
-
-func togglePreview(){}
-
-struct TaskAdd_Previews: PreviewProvider {
-    static var previews: some View {
-        TaskAdd(taskAddVM: TaskAddViewModel(taskListVM: TaskListViewModel()))
-    }
-}
-

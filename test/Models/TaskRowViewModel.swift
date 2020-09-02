@@ -2,7 +2,7 @@ import SwiftUI
 
 final class TaskRowViewModel: ObservableObject, Identifiable {
     @Published var task: Task
-    
+
     init(task: Task){
         self.task = task
     }

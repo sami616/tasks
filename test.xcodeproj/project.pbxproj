@@ -121,11 +121,11 @@
 		266D2CB524FF8743005D73BE /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				266D2CB224F94194005D73BE /* Login.swift */,
 				8AAEEB4A24F1CE01007EC803 /* ContentView.swift */,
+				266D2CB224F94194005D73BE /* Login.swift */,
 				8AAEEB7E24F3DBC2007EC803 /* TaskList.swift */,
-				8AAEEB7C24F3BFBB007EC803 /* TaskRow.swift */,
 				8A550C6524F4FC0900E8304A /* TaskAdd.swift */,
+				8AAEEB7C24F3BFBB007EC803 /* TaskRow.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -189,9 +189,9 @@
 		8AAEEB4524F1CE01007EC803 /* test */ = {
 			isa = PBXGroup;
 			children = (
+				266D2CB424FF872F005D73BE /* App */,
 				266D2CB724FF88DF005D73BE /* Models */,
 				266D2CB524FF8743005D73BE /* Views */,
-				266D2CB424FF872F005D73BE /* App */,
 				8AAEEB4C24F1CE03007EC803 /* Assets.xcassets */,
 				8AAEEB5124F1CE03007EC803 /* LaunchScreen.storyboard */,
 				8AAEEB5424F1CE03007EC803 /* Info.plist */,

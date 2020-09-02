@@ -1,11 +1,3 @@
-//
-//  Login.swift
-//  test
-//
-//  Created by Sami Resua on 28/08/2020.
-//  Copyright © 2020 Samuel Resua. All rights reserved.
-//
-
 import SwiftUI
 import FirebaseAuth
 
@@ -43,11 +35,5 @@ struct Login: View {
         }
 
         
-    }
-}
-
-struct Login_Previews: PreviewProvider {
-    static var previews: some View {
-        Login()
     }
 }

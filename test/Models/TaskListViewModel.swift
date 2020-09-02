@@ -14,10 +14,13 @@ final class TaskListViewModel: ObservableObject {
     @Published var tasks = [TaskRowViewModel]()
     @Published var showSheet = false
     @Published var hideCompleted = false
-    @Published var incomplete = [TaskRowViewModel]()
     
     init() {
         self.tasks = testDataTasks.map { task in TaskRowViewModel(task: task) }
+    }
+    
+    var incomplete: [TaskRowViewModel] {
+        return self.tasks.filter { !$0.task.completed }
     }
     
     func toggleComplete() {
